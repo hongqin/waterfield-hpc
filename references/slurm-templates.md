@@ -24,6 +24,11 @@ set -euo pipefail
 python your_script.py
 ```
 
+## Partition Choice Tip
+- Use `h100flex` for H100 (Hopper) nodes.
+- Use `rtxp6000flex` for RTX 6000 (Blackwell) nodes.
+  - **Warning:** Ensure your PyTorch environment is updated to support Blackwell (`sm_120`), otherwise jobs will fail with CUDA kernel errors.
+
 ## Monitoring Jobs
 - `squeue -u $USER`: Check status of your jobs.
 - `scancel <job_id>`: Cancel a job.
