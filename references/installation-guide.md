@@ -1,5 +1,20 @@
 # Installation Guide for Waterfield
 
+## Installing Miniforge3 Locally
+If you don't have a Python environment manager, install Miniforge3 (a lightweight Conda alternative) in your home directory:
+
+```bash
+# Download the installer
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+
+# Run the installer (follow prompts, usually install to ~/miniforge3)
+bash Miniforge3-Linux-x86_64.sh
+
+# Initialize your shell
+source ~/miniforge3/bin/activate
+conda init
+```
+
 ## Environment Setup
 Waterfield works best with **Miniforge3** for managing Python environments.
 
