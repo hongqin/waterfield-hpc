@@ -142,6 +142,22 @@ sinfo -t down,drain,fail --format="%.20P %.6D %.6t %.20N"
 
 Node states: `idle`/`idle~` = available, `mix`/`alloc` = busy but healthy, `down`/`drain`/`drng`/`fail` = unhealthy (avoid).
 
+### 9. Document Rendering (DOCX and PDF)
+
+Generate NIH-formatted Word and PDF documents from markdown source files. See [references/document-rendering.md](references/document-rendering.md) for full details.
+
+```bash
+cd ~/2026-06-05-R01-viralGPT
+
+# Markdown → DOCX (NIH submission format)
+python3 app/render.py docs/research_strategy_approach.md
+
+# Markdown → PDF (internal routing / review)
+python3 app/render_pdf.py docs/research_strategy_approach.md
+```
+
+Both use Python-only libraries (`python-docx`, `weasyprint`) — no LibreOffice or external tools needed. Figures from `preliminary_figures/` are automatically embedded via the `FIGURE_REGISTRY` in `app/render.py`.
+
 ## Core Configurations
 - **Partitions:** `h100flex-1`, `h100flex-2`, `h100flex-4`, `h100flex-8`, `rtxp6000flex-1`, `rtxp6000flex-2`, `rtxp6000flex-4`, `rtxp6000flex-8`, `h200flex-8`, `b200flex-8`.
 - **GPUs:** NVIDIA H100 (Hopper), RTX 6000 Ada (Blackwell), H200, B200.
