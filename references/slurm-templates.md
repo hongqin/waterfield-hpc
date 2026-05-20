@@ -92,7 +92,11 @@ For non-training workloads (e.g., embedding extraction), process data in batches
   - **Warning:** Ensure your PyTorch environment is updated to support Blackwell (`sm_120`), otherwise jobs will fail with CUDA kernel errors.
 
 ## Monitoring Jobs
-- `squeue -u $USER`: Check status of your jobs.
+
+See [job-monitoring.md](job-monitoring.md) for the full monitoring, hung-job detection, and recovery guide.
+
+- `squeue -u $USER --format="%.10i %.30j %.10T %.10M %.20R %.15P"`: Job status with partition info.
+- `scontrol show job <job_id>`: Detailed job info (start time, node, exit code).
+- `srun --jobid=<job_id> --overlap nvidia-smi`: GPU utilization (cannot SSH to GPU nodes directly).
 - `scancel <job_id>`: Cancel a job.
-- `scontrol show job <job_id>`: Get detailed info about a job.
-- `nvidia-smi`: Run inside a job (interactive or batch) to check GPU usage.
+- `sinfo -t idle,idle~ --format="%.20P %.6D %.6t" | grep -E "flex|gpu"`: Find partitions with idle GPU nodes.
