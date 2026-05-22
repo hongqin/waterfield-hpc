@@ -158,6 +158,24 @@ python3 app/render_pdf.py docs/research_strategy_approach.md
 
 Both use Python-only libraries (`python-docx`, `weasyprint`) — no LibreOffice or external tools needed. Figures from `preliminary_figures/` are automatically embedded via the `FIGURE_REGISTRY` in `app/render.py`.
 
+### 10. Project-Local Memory Update
+
+Manage durable project facts in the project root `memory/` directory. See [references/project-local-memory.md](references/project-local-memory.md) for full details.
+
+```bash
+# Read the index
+cat ~/2026-06-05-R01-viralGPT/memory/MEMORY.md
+
+# Read a specific memory file
+cat ~/2026-06-05-R01-viralGPT/memory/project_viralGPT_R01.md
+```
+
+Key rules:
+- **Edit in place** — update existing files, don't duplicate topics.
+- **Keep `MEMORY.md` index in sync** when adding/removing files.
+- **Always read before writing** — never overwrite blindly.
+- Project-local memory is git-tracked; Claude auto-memory (`~/.claude/projects/*/memory/`) is not.
+
 ## Core Configurations
 - **Partitions:** `h100flex-1`, `h100flex-2`, `h100flex-4`, `h100flex-8`, `rtxp6000flex-1`, `rtxp6000flex-2`, `rtxp6000flex-4`, `rtxp6000flex-8`, `h200flex-8`, `b200flex-8`.
 - **GPUs:** NVIDIA H100 (Hopper), RTX 6000 Ada (Blackwell), H200, B200.
